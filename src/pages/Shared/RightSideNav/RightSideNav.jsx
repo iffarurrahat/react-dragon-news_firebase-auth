@@ -1,17 +1,44 @@
+import { useContext } from 'react';
 import qZone1 from '../../../assets/qZone1.png'
 import qZone2 from '../../../assets/qZone2.png'
 import qZone3 from '../../../assets/qZone3.png'
 import { FaGoogle, FaGithub, FaFacebookF } from "react-icons/fa";
 import { FaXTwitter, FaInstagram } from "react-icons/fa6";
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const RightSideNav = () => {
+
+    const { signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+
+    // google signIn
+    const handleGoogleSingIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+    // github signIn
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <div className=' h-screen'>
             {/* login with */}
             <div>
                 <h4 className="text-xl font-semibold mb-4">Login With</h4>
-                <button className="btn w-full font-semibold btn-outline border border-blue-600 text-blue-600 mb-3"><FaGoogle />  Login With Google</button>
-                <button className="btn w-full font-semibold btn-outline"><FaGithub /> Login With Github</button>
+                <button onClick={handleGoogleSingIn} className="btn w-full font-semibold btn-outline border border-blue-600 text-blue-600 mb-3"><FaGoogle />  Login With Google</button>
+                <button onClick={handleGithubSignIn} className="btn w-full font-semibold btn-outline"><FaGithub /> Login With Github</button>
             </div>
             {/* find us on */}
             <div className="mt-7">
@@ -25,7 +52,7 @@ const RightSideNav = () => {
                     </span>
                     Twitter</a>
                 <a className="flex items-center gap-2 border rounded-b-lg p-4" href="#">
-                    <span  className='bg-gray-200 p-2 rounded-full'>
+                    <span className='bg-gray-200 p-2 rounded-full'>
                         <FaInstagram className='text-orange-600' />
                     </span>
                     Instagram</a>

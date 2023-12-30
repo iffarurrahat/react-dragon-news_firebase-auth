@@ -4,6 +4,7 @@ import LeftSideNav from "../Shared/LeftSideNav/LeftSideNav";
 import RightSideNav from "../Shared/RightSideNav/RightSideNav";
 
 const Home = () => {
+
     return (
         <div>
             <Header />

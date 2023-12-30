@@ -1,11 +1,45 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
+
+
 
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+    const handleRegister = e => {
+        e.preventDefault();
+        const form = new FormData(e.currentTarget)
+        const name = form.get('name');
+        const photo = form.get('photo');
+        const email = form.get('email');
+        const password = form.get('password')
+        // console.log(name, photo, email, password);
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                e.target.reset();
+                // update profile
+                updateProfile(result.user, {
+                    displayName: name,
+                    photoURL: photo,
+                })
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }
+
     return (
-        <div className="bg-light-gray mt-0 py-5">
-            <div className="bg-white py-5 md:py-16 md:w-1/2 mx-auto mt-8 rounded">
-                <h2 className="text-3xl font-semibold text-center">Register your account</h2>
-                <form className="card-body md:w-3/4 lg:w-2/3 mx-auto ">
+        <div className="bg-[#F3F3F3] h-full w-full flex justify-center items-center">
+            <div className="bg-white py-5 md:py-10 w-11/12 my-2 md:w-1/2 mx-auto rounded">
+                <h2 className="text-2xl md:text-3xl font-semibold text-center">Register Your Account <span className="h-6">&#128512;</span></h2>
+                <p className=" border-b-2 mx-auto w-2/3 mt-3"></p>
+                <form onSubmit={handleRegister} className="card-body md:w-3/4 lg:w-2/3 mx-auto ">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Your Name</span>
