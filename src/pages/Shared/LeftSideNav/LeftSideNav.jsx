@@ -20,7 +20,7 @@ const LeftSideNav = () => {
     }, [])
 
     return (
-        <div className=" h-screen">
+        <div className="h-screen">
             <h4 className="text-xl font-semibold mb-4">All Category</h4>
             <button className="btn w-full text-xl font-semibold"> National News</button>
             <div>
