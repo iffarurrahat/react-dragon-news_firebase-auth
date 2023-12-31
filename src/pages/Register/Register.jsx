@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
@@ -8,6 +8,8 @@ import { updateProfile } from "firebase/auth";
 const Register = () => {
 
     const { createUser } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault();
@@ -25,7 +27,11 @@ const Register = () => {
                 updateProfile(result.user, {
                     displayName: name,
                     photoURL: photo,
-                })
+                });
+
+
+                // navigate after register
+                navigate(location?.state ? location.state : '/');
 
             })
             .catch(error => {

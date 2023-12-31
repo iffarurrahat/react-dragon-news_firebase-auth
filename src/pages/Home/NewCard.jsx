@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { FaEye, FaRegBookmark } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
 import Rating from "react-rating";
-import { FaStar, FaStarHalf } from "react-icons/fa";
 
 const NewCard = ({ news }) => {
     const { _id, author, title, image_url, details, rating, total_view } = news || {}
@@ -26,7 +25,7 @@ const NewCard = ({ news }) => {
                 <img className="mb-7" src={image_url} alt="" />
                 <p>
                     {
-                        details.length > 200 ?
+                        details?.length > 200 ?
                             <p>{details.slice(0, 200)} <Link className="text-blue-600" to={`/news/${_id}`}>Read More...</Link></p> :
                             <p>{details}</p>
                     }

@@ -20,7 +20,7 @@ const LeftSideNav = () => {
     }, [])
 
     return (
-        <div className="h-screen">
+        <div className="md:h-screen">
             <h4 className="text-xl font-semibold mb-4">All Category</h4>
             <button className="btn w-full text-xl font-semibold"> National News</button>
             <div>
@@ -39,8 +39,8 @@ const LeftSideNav = () => {
                     leftAside.map(data => {
                         return (
                             <div key={data.id} className="mb-8">
-                                <img src={data.image} alt="" />
-                                <div className="pr-4">
+                                <img className="mx-auto md:mx-0" src={data.image} alt="" />
+                                <div className="px-12 md:px-0 md:pr-4">
                                     <h2 className="text-lg font-medium my-2">{data.title}</h2>
                                     <p className="flex justify-between">
                                         <span>Sport</span>
