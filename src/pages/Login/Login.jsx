@@ -5,7 +5,6 @@ import { AuthContext } from "../../providers/AuthProvider";
 const Login = () => {
 
     const { signInUser } = useContext(AuthContext);
-    const navigate = useNavigate();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -16,7 +15,7 @@ const Login = () => {
         signInUser(email, password)
             .then(result => {
                 console.log(result.user);
-                navigate('/')
+                e.target.reset();
             })
             .catch(error => {
                 console.error(error)

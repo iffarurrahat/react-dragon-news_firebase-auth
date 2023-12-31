@@ -46,7 +46,7 @@ const Navbar = () => {
                         <div className="w-10 mr-2 border-solid border-2 border-[#403F3F] rounded-full">
                             {
                                 user ?
-                                    <img className="rounded-full" alt="Tailwind CSS Navbar component" src={user.photoURL} /> :
+                                    <img className="rounded-full w-10 h-9" alt="Tailwind CSS Navbar component" src={user.photoURL} /> :
                                     <img className="rounded-full" alt="Tailwind CSS Navbar component" src={userDefaultPic} />
                             }
                         </div>
