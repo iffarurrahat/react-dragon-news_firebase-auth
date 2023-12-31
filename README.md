@@ -1,5 +1,5 @@
-# Project Name:
-# Project Live URL: [](https://recat-dragonnews-auth-revision.web.app/)
+# Project Name: Dragon News
+# Project Live URL: [Dragon News](https://recat-dragonnews-auth-revision.web.app/)
 
 Using Tool/Package:
 - React
