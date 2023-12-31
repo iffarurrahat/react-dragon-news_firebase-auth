@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Header from "../Shared/Header/Header";
 import RightSideNav from "../Shared/RightSideNav/RightSideNav";
+import { useEffect, useState } from "react";
 
 const News = () => {
 
@@ -10,17 +11,21 @@ const News = () => {
     const news = useLoaderData();
     // console.log(news);
 
-    // const newsDetails = news.find(data => data.id === id)
-    // console.log(newsDetails);
+    const [result, setResult] = useState({})
+    useEffect(() => {
+        const result = news?.find(data => data._id === id);
+        setResult(result)
+    }, [news, id])
+    const { image_url, title, details } = result || {}
 
     return (
         <div className="max-w-screen-xl mx-auto">
             <Header></Header>
             <div className="grid grid-cols-4 gap-6 mt-3 md:mt-6 lg:mt-12">
                 <div className="col-span-3">
-                    {/* <img className="w-full" src={image_url} alt="" />
+                    <img className="w-full" src={image_url} alt="" />
                     <p className="text-xl font-bold my-5">{title}</p>
-                    <p>{details}</p> */}
+                    <p>{details}</p>
                 </div>
                 <RightSideNav></RightSideNav>
             </div>
