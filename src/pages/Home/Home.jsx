@@ -19,9 +19,8 @@ const Home = () => {
                 <div>
                     <LeftSideNav />
                 </div>
-                <div className="md:col-span-2">
+                <div className="md:col-span-2 h-screen overflow-y-scroll">
                     {
-
                         news.map((aNews, index) => <NewCard
                             key={index}
                             news={aNews}

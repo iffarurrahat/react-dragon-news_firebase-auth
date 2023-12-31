@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaEye, FaRegBookmark } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
 import Rating from "react-rating";
+import PropTypes from 'prop-types';
 
 const NewCard = ({ news }) => {
     const { _id, author, title, image_url, details, rating, total_view } = news || {}
@@ -70,4 +71,8 @@ const NewCard = ({ news }) => {
     );
 };
 
+
+NewCard.propTypes = {
+    news: PropTypes.object.isRequired,
+};
 export default NewCard;
